@@ -8,6 +8,7 @@ const defaultValue = {
     closeModal: () => {},
     cartItems: {},
     addToCartItem: (cartItems) => {},
+    removeToCartItem: (cartItems) => {},
 };
 
 const CartContext = createContext(defaultValue);
