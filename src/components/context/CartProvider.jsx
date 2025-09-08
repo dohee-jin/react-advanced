@@ -15,7 +15,23 @@ const CartProvider = ({children}) => {
 
     // 장바구니에 데이터를 추가하는 함수
     const handleAddToCartItem = (newItem) => {
-        setCartItems(prev => [...prev, newItem]);
+
+        // 원본 장바구니 배열을 복사
+        const existingItems = cartItems;
+
+        // 이미 장바구니에 있는 항목인지를 체크
+        const foundItem = existingItems.find(cartItem => cartItem.id === newItem.id);
+
+        // 기존에 있는 아이템
+        if(foundItem) {
+            foundItem.amount += newItem.amount;
+            foundItem.price += newItem.price;
+            setCartItems(existingItems);
+        }
+        // 새롭게 추가된 아이템
+        else {
+            setCartItems([...cartItems, newItem])
+        }
     }
 
     // 컨텍스트가 관리할 중앙 상태값
