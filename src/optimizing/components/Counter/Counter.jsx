@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 
 import IconButton from '../UI/IconButton';
 import MinusIcon from '../UI/Icons/MinusIcon';
@@ -36,6 +36,9 @@ const Counter = ({ initialCount }) => {
         value: initialCount
     }]);
 
+    /*useEffect(() => {
+        setCounterChanges([{id: Math.random().toString(), value: initialCount}]);
+    }, [initialCount]);*/
     // const [counter, setCounter] = useState(initialCount);
 
     const decrementHandler = useCallback(() => {
