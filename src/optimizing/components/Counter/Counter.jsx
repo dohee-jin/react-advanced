@@ -30,20 +30,30 @@ const Counter = ({ initialCount }) => {
 
 
     // 카운터의 변화를 배열로 추적
-    const [counterChanges, setCounterChanges] = useState([initialCount]);
+    // => [{id: 'x1', value: 1}, {id: 'x2', value: 1}, ...]
+    const [counterChanges, setCounterChanges] = useState([{
+        id: Math.random().toString(),
+        value: initialCount
+    }]);
 
     // const [counter, setCounter] = useState(initialCount);
 
     const decrementHandler = useCallback(() => {
-      setCounterChanges(prev => [-1, ...prev])
+      setCounterChanges(prev => [{
+          id: Math.random().toString(),
+          value: -1
+    }, ...prev])
     } ,[])
 
     const incrementHandler = useCallback( () => {
-      setCounterChanges(prev => [+1, ...prev])
+      setCounterChanges(prev => [{
+          id: Math.random().toString(),
+          value: +1
+      }, ...prev])
     }, []);
 
     // 현재 카운트 로그배열의 총합
-    const totalCount = counterChanges.reduce((acc, curr) => acc + curr, 0)
+    const totalCount = counterChanges.reduce((acc, curr) => acc + curr.value, 0)
 
     return (
     <section className='counter'>

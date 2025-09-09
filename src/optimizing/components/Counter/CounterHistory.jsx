@@ -25,10 +25,10 @@ const CounterHistory = ({ history }) => {
 
   return (
     <ol>
-      {history.map((count, index) => (
+      {history.map(({id, value}) => (
         <HistoryItem
-          key={index}
-          count={count}
+          key={id} // 키는 동적으로 설정하면 안됨, 고정값
+          count={value}
         />
       ))}
     </ol>
