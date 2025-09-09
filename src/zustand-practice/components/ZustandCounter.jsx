@@ -4,7 +4,7 @@ import {useCounterScore} from "../store/counterStroe.js";
 const ZustandCounter = () => {
 
     // 상태 구독
-    const {count, showCounter} = useCounterScore();
+    const {count, showCounter, increment, decrement, multiply, toggle} = useCounterScore();
 
     return (
         <main className={styles.counter}>
@@ -17,11 +17,11 @@ const ZustandCounter = () => {
                     justifyContent: 'center',
                     marginBottom: 8,
                 }}>
-                <button>Increment</button>
-                <button>Decrement</button>
-                <button>×3</button>
+                <button onClick={increment}>Increment</button>
+                <button onClick={decrement}>Decrement</button>
+                <button onClick={() => multiply(3)}>×3</button>
             </div>
-            <button>Toggle Counter</button>
+            <button onClick={toggle}>Toggle Counter</button>
         </main>
     );
 };
